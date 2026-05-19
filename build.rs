@@ -64,6 +64,7 @@ fn main() {
         .allowlist_function("t_snprintf")
         .allowlist_type("tagi_t")
         .allowlist_type("tag_type_t")
+        .allowlist_type("tag_class_t")
         .allowlist_type("tag_value_t")
         .allowlist_var("tag_null")
         .allowlist_var("tag_skip")
@@ -88,7 +89,7 @@ fn main() {
         .allowlist_function("url_e")
         /* msg_types.h */
         // .opaque_type("msg_pub_t")
-        .opaque_type("msg_hclass_t") /* struct with bit fields (auto-generated tests fails on this kind of struct) */
+        .opaque_type("msg_hclass_s") /* struct with bit fields (auto-generated tests fails on this kind of struct) */
         /* libc */
         .allowlist_function("atexit")
         .allowlist_function("printf")
@@ -109,7 +110,7 @@ fn main() {
         )
         // Tell cargo to invalidate the built crate whenever any of the
         // included header files changed.
-        .parse_callbacks(Box::new(bindgen::CargoCallbacks))
+        .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
         // Finish the builder and generate the bindings.
         .generate()
         // Unwrap the Result and panic on failure.

@@ -103,7 +103,7 @@ impl TagItem {
         /* create a buf to store c string plus '\0' */
         let buf_len: usize = len + 1;
         let mut buf: Vec<u8> = vec![0; buf_len];
-        unsafe { sys::t_snprintf(sys_tagi_ptr, buf.as_mut_ptr() as *mut i8, buf_len as u64) };
+        unsafe { sys::t_snprintf(sys_tagi_ptr, buf.as_mut_ptr() as *mut i8, buf_len) };
         String::from_utf8_lossy(&buf[..len]).to_string()
     }
 

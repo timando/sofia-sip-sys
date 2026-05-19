@@ -13,7 +13,7 @@ repository = "https://github.com/iuridiniz/sofia-sip-sys/"
 version = "0.1.0"
 
 [build-dependencies]
-bindgen = "0.58.1"
+bindgen = "0.72.1"
 metadeps = "1.1.2"
 pkg-config = "0.3.19"
 
